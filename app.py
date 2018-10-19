@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 
 import web
+import models
 
 urls = (
     '/', 'controllers.index.index'  # 只有这样传完整包名, web-py才能帮我们自动reload修改后的handler.index module
