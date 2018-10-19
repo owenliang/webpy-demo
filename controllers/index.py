@@ -3,6 +3,7 @@
 import web
 import views
 from models.user_model import user_model
+import models
 import json
 
 # 控制器
@@ -18,7 +19,8 @@ class index:
         request = web.input('name') # 要求必须包含name参数
         try:
             last_id = user_model.insert_user(request['name'])
-        except:
-            return json.dumps({'errno': -1, 'msg': '数据库异常'})
+            models.cache_webpy.set('user_' + str(last_id), request['name'])  # 更新缓存
+        except Exception as e:
+            return json.dumps({'errno': -1, 'msg': str(e)})
         else:
             return json.dumps({'errno': 0, 'msg': '成功', 'data': {'id': last_id}})
