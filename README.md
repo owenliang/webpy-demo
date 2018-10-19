@@ -7,6 +7,7 @@
 * pip3 install git+https://github.com/webpy/webpy#egg=web.py
 * pip3 install PyMySQL
 * pip3 install gunicorn
+* pip3 install redis
 
 # 启动
 
